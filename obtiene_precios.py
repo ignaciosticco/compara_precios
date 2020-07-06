@@ -1,9 +1,6 @@
 '''
 Este script se encarga de entrar a los sitios de los supermercados y obtener los precios de los productos
 '''
-
-# Nota: El programa a veces corre bien y aveces tira error. No se porque tiene este comportamiento aleatorio.
-
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -98,7 +95,6 @@ def main():
     bot = precioBot()
     url = 'https://supermercado.carrefour.com.ar'
     bot.accede_al_sitio(url)
-    #producto = 'coca cola'
     print("¿Qué producto buscas?\n")
     producto = str(input())
     bot.busca_producto(producto)
