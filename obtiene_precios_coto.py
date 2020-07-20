@@ -4,7 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 from requests import get
-
+from lxml import html
+import requests
 
 class precioBot_coto:
 
@@ -24,7 +25,6 @@ class precioBot_coto:
 
 
 def main():
-
 	
 
 	bot = precioBot_coto()
@@ -37,13 +37,16 @@ def main():
 	response = get(bot.driver.current_url)
 	html_soup = BeautifulSoup(response.text, 'html.parser')
 
-
+	#product_containers = html_soup.find_all('li', class_ = 'clearfix')
+	#producto = product_containers[1]
+	#test1 = producto.span.span.span
+	#test1 = producto.div.div
+	#print( html_soup.findAll("span", {"class": "price_regular_precio"}))
+	#print(product_containers[1].findAll("span", {"class": "precioContado"}))
 	product_containers = html_soup.find_all('li', class_ = 'clearfix')
-	producto = product_containers[0]
-	test1 = producto.span.span
-	#print(test1)
-
-
+	print(html_soup)
+	print(atg_store_productImage)
+	
 	time.sleep(10)
 	
 
