@@ -37,16 +37,22 @@ def main():
 	response = get(bot.driver.current_url)
 	html_soup = BeautifulSoup(response.text, 'html.parser')
 
-	#product_containers = html_soup.find_all('li', class_ = 'clearfix')
-	#producto = product_containers[1]
-	#test1 = producto.span.span.span
-	#test1 = producto.div.div
-	#print( html_soup.findAll("span", {"class": "price_regular_precio"}))
-	#print(product_containers[1].findAll("span", {"class": "precioContado"}))
-	product_containers = html_soup.find_all('li', class_ = 'clearfix')
+	#### Intento extraccion de precio ####
+
 	print(html_soup)
-	print(atg_store_productImage)
+	text_file = open("sample.txt", "w")
+	n = text_file.write('{}'.format(html_soup))
+	text_file.close()
+
+	#### Intento extraccion de producto ####
+
+	# Esto me parece que esta OK. Si imprimis product_containers[0].text te da el nombre del primer producto
+	product_containers = html_soup.find_all('div', class_ = 'descrip_full')
+	#print(product_containers[0].text)
 	
+
+
+
 	time.sleep(10)
 	
 
