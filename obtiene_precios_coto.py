@@ -24,6 +24,7 @@ class precioBot_coto:
 
 
 
+
 def main():
 	
 
@@ -37,18 +38,50 @@ def main():
 	response = get(bot.driver.current_url)
 	html_soup = BeautifulSoup(response.text, 'html.parser')
 
-	#### Intento extraccion de precio ####
-
-	print(html_soup)
-	text_file = open("sample.txt", "w")
-	n = text_file.write('{}'.format(html_soup))
-	text_file.close()
 
 	#### Intento extraccion de producto ####
 
+	
+	
 	# Esto me parece que esta OK. Si imprimis product_containers[0].text te da el nombre del primer producto
 	product_containers = html_soup.find_all('div', class_ = 'descrip_full')
-	#print(product_containers[0].text)
+	lista_productos = []
+	for producto in product_containers:
+		lista_productos+=[producto.text]
+
+
+
+
+	#### Intento extraccion de precio ####
+
+
+	html_sting = str(html_soup)
+	texto_separado = html_sting.split('\n')
+
+	#text_file = open("sample.txt", "w")
+	#n = text_file.write('{}'.format(texto_separado))
+	#text_file.close()
+	texto_html_precio = '<span class="precioContado">PRECIO CONTADO</span></span></span></div></li>'  # El precio de un producto aparece luego de este texto (para todos los productos). 
+	lista_precios = []
+	i=0
+	while i<len(texto_separado):
+		if texto_html_precio in texto_separado[i]:
+			j=0
+			flag = True
+			while j<len(texto_separado) and flag:
+				if '$' in texto_separado[i+j]:
+					lista_precios+=[texto_separado[i+j]]
+					flag = False
+					i = i+j-1
+				j+=1
+		i+=1
+
+
+
+	print(lista_productos)
+	print(len(lista_productos))
+	print(lista_precios)
+	print(len(lista_precios))
 	
 
 
