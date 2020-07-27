@@ -38,9 +38,6 @@ class precioBot_coto:
 		html_sting = str(html)
 		texto_separado = html_sting.split('\n')
 
-		#text_file = open("sample.txt", "w")
-		#n = text_file.write('{}'.format(texto_separado))
-		#text_file.close()
 		texto_html_precio = '<span class="precioContado">PRECIO CONTADO</span></span></span></div></li>'  # El precio de un producto aparece luego de este texto (para todos los productos). 
 		lista_precios = []
 		i=0
@@ -85,8 +82,8 @@ def main():
 
 	bot.imprime_lista_precios(lista_productos,lista_precios)
 
-
-
+	#bot.driver.find_element_by_xpath('//*[@title="Siguiente"]').click()
+	bot.driver.find_element_by_xpath('//*[@title="Ir a página 2"]').click()
 
 	time.sleep(10)
 	
