@@ -22,8 +22,50 @@ class precioBot_coto:
 		id_busqueda.send_keys('{}'.format(producto))
 		id_busqueda.send_keys(Keys.ENTER)
 
+	def obtiene_nombre_productos(self,html):
+		'''
+		Esta funcion devuelve una lista cuyos elementos son los nombres de los productos asociados al 'producto' buscado
+		'''
+		product_containers = html.find_all('div', class_ = 'descrip_full')
+		lista_productos = []
+		for producto in product_containers:
+			lista_productos+=[producto.text]
+		return lista_productos
 
 
+	def obtiene_precios_productos(self,html):
+
+		html_sting = str(html)
+		texto_separado = html_sting.split('\n')
+
+		#text_file = open("sample.txt", "w")
+		#n = text_file.write('{}'.format(texto_separado))
+		#text_file.close()
+		texto_html_precio = '<span class="precioContado">PRECIO CONTADO</span></span></span></div></li>'  # El precio de un producto aparece luego de este texto (para todos los productos). 
+		lista_precios = []
+		i=0
+		while i<len(texto_separado):
+			if texto_html_precio in texto_separado[i]:
+				j=0
+				flag = True
+				while j<len(texto_separado) and flag:
+					if '$' in texto_separado[i+j]:
+						lista_precios+=[texto_separado[i+j]]
+						flag = False
+						i = i+j-1
+					j+=1
+			i+=1
+		return lista_precios
+
+
+	def imprime_lista_precios(self, lista_productos,lista_precios):
+		'''
+		Imprime en la terminal una tabla de productos y precios
+		'''
+
+		print("\nProducto\t\t\tPrecio ")
+		for i in range(0,len(lista_productos)):
+			print("{}\t\t{}".format(lista_productos[i], lista_precios[i]))
 
 def main():
 	
@@ -38,51 +80,11 @@ def main():
 	response = get(bot.driver.current_url)
 	html_soup = BeautifulSoup(response.text, 'html.parser')
 
+	lista_productos = bot.obtiene_nombre_productos(html_soup)
+	lista_precios = bot.obtiene_precios_productos(html_soup)
 
-	#### Intento extraccion de producto ####
+	bot.imprime_lista_precios(lista_productos,lista_precios)
 
-	
-	
-	# Esto me parece que esta OK. Si imprimis product_containers[0].text te da el nombre del primer producto
-	product_containers = html_soup.find_all('div', class_ = 'descrip_full')
-	lista_productos = []
-	for producto in product_containers:
-		lista_productos+=[producto.text]
-
-
-
-
-	#### Intento extraccion de precio ####
-
-
-	html_sting = str(html_soup)
-	texto_separado = html_sting.split('\n')
-
-	#text_file = open("sample.txt", "w")
-	#n = text_file.write('{}'.format(texto_separado))
-	#text_file.close()
-	texto_html_precio = '<span class="precioContado">PRECIO CONTADO</span></span></span></div></li>'  # El precio de un producto aparece luego de este texto (para todos los productos). 
-	lista_precios = []
-	i=0
-	while i<len(texto_separado):
-		if texto_html_precio in texto_separado[i]:
-			j=0
-			flag = True
-			while j<len(texto_separado) and flag:
-				if '$' in texto_separado[i+j]:
-					lista_precios+=[texto_separado[i+j]]
-					flag = False
-					i = i+j-1
-				j+=1
-		i+=1
-
-
-
-	print(lista_productos)
-	print(len(lista_productos))
-	print(lista_precios)
-	print(len(lista_precios))
-	
 
 
 
