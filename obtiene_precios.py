@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 
-class precioBot:
+class PrecioBot:
     def __init__(self):
         self.driver = webdriver.Chrome()
 
@@ -75,11 +75,17 @@ class precioBot:
                 if "Por unidad" in lista_texto_dividido[i + 1]:
                     producto = lista_texto_dividido[i + 4]
                     precio = lista_texto_dividido[i]
-                    producto_precio += [[producto, precio]]
+                    producto_precio.append({
+                        "name": producto,
+                        "precio": precio
+                    })
                 else:
                     producto = lista_texto_dividido[i + 2]
                     precio = lista_texto_dividido[i]
-                    producto_precio += [[producto, precio]]
+                    producto_precio.append({
+                        "name": producto,
+                        "precio": precio
+                    })
 
         return producto_precio
 
@@ -90,12 +96,12 @@ class precioBot:
 
         print("\nProducto\t\t\tPrecio ")
         for x in producto_precio:
-            print("{}\t\t{}".format(x[0], x[1]))
+            print("{}\t\t{}".format(x['name'], x['precio']))
 
 
 def main():
 
-    bot = precioBot()
+    bot = PrecioBot()
     url = 'https://supermercado.carrefour.com.ar'
     bot.accede_al_sitio(url)
     #producto = 'coca cola'
