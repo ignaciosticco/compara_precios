@@ -47,7 +47,7 @@ class precioBot_coto:
 				flag = True
 				while j<len(texto_separado) and flag:
 					if '$' in texto_separado[i+j]:
-						lista_precios+=[texto_separado[i+j]]
+						lista_precios+=[float(texto_separado[i+j].strip(' $'))]
 						flag = False
 						i = i+j-1
 					j+=1
@@ -83,7 +83,7 @@ def main():
 	bot.imprime_lista_precios(lista_productos,lista_precios)
 
 	#bot.driver.find_element_by_xpath('//*[@title="Siguiente"]').click()
-	bot.driver.find_element_by_xpath('//*[@title="Ir a página 2"]').click()
+	#bot.driver.find_element_by_xpath('//*[@title="Ir a página 2"]').click()
 
 	time.sleep(10)
 	

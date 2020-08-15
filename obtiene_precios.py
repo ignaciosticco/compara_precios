@@ -60,6 +60,7 @@ class PrecioBot:
                     'id') and 'amlabel' not in i.get_attribute('id'):
                 print("Precio = ", i.text)
 
+
     def extrae_producto_y_precio(self, texto):
         '''
 		Le pasas el texto donde estan todos los precios y extrae el nombre de los productos y sus precios. 
@@ -77,17 +78,19 @@ class PrecioBot:
                     precio = lista_texto_dividido[i]
                     producto_precio.append({
                         "name": producto,
-                        "precio": precio
+                        "precio": float(precio.strip('$').replace(',','.'))
                     })
                 else:
                     producto = lista_texto_dividido[i + 2]
                     precio = lista_texto_dividido[i]
                     producto_precio.append({
                         "name": producto,
-                        "precio": precio
+                        "precio": float(precio.strip('$').replace(',','.'))
                     })
 
         return producto_precio
+
+
 
     def imprime_lista_precios(self, producto_precio):
         '''
@@ -97,6 +100,9 @@ class PrecioBot:
         print("\nProducto\t\t\tPrecio ")
         for x in producto_precio:
             print("{}\t\t{}".format(x['name'], x['precio']))
+
+
+
 
 def main():
 
