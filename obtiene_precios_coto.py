@@ -47,7 +47,7 @@ class precioBot_coto:
 				flag = True
 				while j<len(texto_separado) and flag:
 					if '$' in texto_separado[i+j]:
-						lista_precios+=[float(texto_separado[i+j].strip(' $'))]
+						lista_precios+=[float(texto_separado[i+j].strip(' $').replace(',', ''))]
 						flag = False
 						i = i+j-1
 					j+=1
@@ -74,17 +74,42 @@ def main():
 	producto = str(input())
 	bot.busca_producto(producto)
 
-	response = get(bot.driver.current_url)
-	html_soup = BeautifulSoup(response.text, 'html.parser')
+	lista_productos = []
+	lista_precios = []
+	num_pagina = 1
+	flag = True	
+	while flag:
+		# Este loop recorre paginas de pagination hasta que no hay mas
+		time.sleep(0.5)
 
-	lista_productos = bot.obtiene_nombre_productos(html_soup)
-	lista_precios = bot.obtiene_precios_productos(html_soup)
+		response = get(bot.driver.current_url)
+		html_soup = BeautifulSoup(response.text, 'html.parser')
+		lista_productos += bot.obtiene_nombre_productos(html_soup)
+		lista_precios += bot.obtiene_precios_productos(html_soup)
+
+		try:
+			# Entra aca si la busqueda tiene multiples paginas
+			pagination = bot.driver.find_elements_by_xpath('//*[@id="atg_store_pagination"]')
+			lista_botones_pagination = pagination[0].find_elements_by_tag_name('li')
+			i = 0
+			nested_flag = True
+			while nested_flag and i<len(lista_botones_pagination):
+				if lista_botones_pagination[i].text == str(num_pagina+1):
+					nested_flag = False	
+				i+=1
+			if nested_flag==False:
+				# Entra si hay mas botones de pagination
+				lista_botones_pagination[i-1].click()
+			else:
+				# Entra si es el ultimo boton de pagination
+				flag = False
+			num_pagina+=1
+		except:
+			# Entra aca si la busqueda no tiene multiples paginas (busqueda con pocos productos)
+			flag = False
 
 	bot.imprime_lista_precios(lista_productos,lista_precios)
-
-	#bot.driver.find_element_by_xpath('//*[@title="Siguiente"]').click()
-	#bot.driver.find_element_by_xpath('//*[@title="Ir a página 2"]').click()
-
+		
 	time.sleep(10)
 	
 
