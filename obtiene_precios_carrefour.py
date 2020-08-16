@@ -85,7 +85,7 @@ class PrecioBot:
                     precio = lista_texto_dividido[i]
                     producto_precio.append({
                         "name": producto,
-                        "precio": float(precio.strip('$').replace(',','.'))
+                        "precio": float(precio.strip('$').replace('.','').replace(',','.'))
                     })
 
         return producto_precio
@@ -141,7 +141,8 @@ def main():
     flag = True
     while flag:
         bot.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2) 
+        time.sleep(4) 
+        print("in while")
         try:
             print("tryup")
             boton_mas_productos = bot.driver.find_element_by_class_name("ver-mas-productos") 
@@ -156,6 +157,11 @@ def main():
         except:
             flag = False
             print("except")
+
+    ids = bot.driver.find_elements_by_xpath('//*[@id]')
+    texto_data_productos = ids[0].text  # Estoy asumiendo que estan en el primer elemento de la lista de elementos
+    producto_precio = bot.extrae_producto_y_precio(texto_data_productos)
+    bot.imprime_lista_precios(producto_precio)
 
     time.sleep(20)
 if __name__ == '__main__':
