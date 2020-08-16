@@ -115,6 +115,7 @@ def main():
     bot.busca_producto(producto)
 
     time.sleep(2)  # Espera 2 seg antes de buscar los precios
+    '''
     bot.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(2)
     ids = bot.driver.find_elements_by_xpath('//*[@id]')
@@ -124,7 +125,39 @@ def main():
 
     boton = bot.driver.find_element_by_class_name("ver-mas-productos")
     time.sleep(20)
+    
 
+    ###
+    ###Funciona
+    bot.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)
+    boton_mas_productos = bot.driver.find_element_by_class_name("ver-mas-productos") 
+    print(boton_mas_productos)
+    
+    print(boton_mas_productos.is_displayed())
+    bot.driver.execute_script("arguments[0].click();", boton_mas_productos)
+    '''
+         
+    flag = True
+    while flag:
+        bot.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2) 
+        try:
+            print("tryup")
+            boton_mas_productos = bot.driver.find_element_by_class_name("ver-mas-productos") 
+            if boton_mas_productos.is_displayed():
+                bot.driver.execute_script("arguments[0].click();", boton_mas_productos)
+                print("True")
+            else:
+                flag = False
+                print("False")
+            
+            print("trydown")
+        except:
+            flag = False
+            print("except")
+
+    time.sleep(20)
 if __name__ == '__main__':
     main()
 
