@@ -1,5 +1,5 @@
 from time import sleep
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from obtiene_precios import PrecioBot
 
 app = Flask(__name__)
@@ -7,9 +7,15 @@ app = Flask(__name__)
 
 @app.route('/producto/<string:nombre>')
 def producto(nombre):
+    # nombre = request.form['producto-buscado']
     print(nombre)
     productoPrecio = getPrecios(nombre)
     return jsonify(productoPrecio)
+
+
+@app.route('/')
+def test():
+    return 'hola'
 
 
 def getPrecios(producto):
