@@ -115,11 +115,15 @@ def main():
     bot.busca_producto(producto)
 
     time.sleep(2)  # Espera 2 seg antes de buscar los precios
+    bot.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)
     ids = bot.driver.find_elements_by_xpath('//*[@id]')
     texto_data_productos = ids[0].text  # Estoy asumiendo que estan en el primer elemento de la lista de elementos
     producto_precio = bot.extrae_producto_y_precio(texto_data_productos)
     bot.imprime_lista_precios(producto_precio)
 
+    boton = bot.driver.find_element_by_class_name("ver-mas-productos")
+    time.sleep(20)
 
 if __name__ == '__main__':
     main()
