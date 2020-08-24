@@ -87,6 +87,7 @@ def main():
 		lista_productos += bot.obtiene_nombre_productos(html_soup)
 		lista_precios += bot.obtiene_precios_productos(html_soup)
 
+
 		try:
 			# Entra aca si la busqueda tiene multiples paginas
 			pagination = bot.driver.find_elements_by_xpath('//*[@id="atg_store_pagination"]')
@@ -107,6 +108,10 @@ def main():
 		except:
 			# Entra aca si la busqueda no tiene multiples paginas (busqueda con pocos productos)
 			flag = False
+
+	text_file = open("sample.txt", "w")
+	n = text_file.write(str(html_soup))
+	text_file.close()
 
 	bot.imprime_lista_precios(lista_productos,lista_precios)
 		
