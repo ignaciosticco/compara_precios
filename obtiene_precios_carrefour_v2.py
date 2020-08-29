@@ -25,23 +25,26 @@ class PrecioBot:
 			Los precios en promocion no estan en regular-price sino en product-price
 			'''		
 			precio = self.driver.find_elements_by_xpath("//*[contains(@id, 'product-price')]")
-			precio_output = precio[1].text
+			precio_output = float(str(precio[1].text).strip('$').replace('.','').replace(',','.'))
 
 		else:
-			precio_output = precio.text
+			precio_output = float(str(precio.text.split('$')[1]).replace('.','').replace(',','.'))#precio.text
 
 		return precio_output
 
 def main():
 
-	#url = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
+	#url1 = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
+	url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-5-l.html'
+
 
 	bot = PrecioBot()
-	bot.accede_al_sitio(url)
+	bot.accede_al_sitio(url2)
 	time.sleep(2)
 	precio = bot.driver.find_element_by_class_name("regular-price")	
-	bot.imprime_precio(precio)
-
+	
+	precio_output = bot.imprime_precio(precio)
+	print(precio_output)
 
 
 if __name__ == '__main__':
