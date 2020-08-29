@@ -35,7 +35,7 @@ class PrecioBot:
 def main():
 
 	#url1 = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
-	url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-5-l.html'
+	#url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-5-l.html'
 
 
 	bot = PrecioBot()
@@ -44,7 +44,6 @@ def main():
 	precio = bot.driver.find_element_by_class_name("regular-price")	
 	
 	precio_output = bot.imprime_precio(precio)
-	print(precio_output)
 
 
 if __name__ == '__main__':

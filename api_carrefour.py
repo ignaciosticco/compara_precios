@@ -29,7 +29,7 @@ def main():
 	string_out = 'Precios de Carrefour\n\n'
 	for i in range (0,len(lista_urls)):
 		bot.accede_al_sitio(lista_urls[i])
-		time.sleep(2)
+		time.sleep(4)
 		precio = bot.driver.find_element_by_class_name("regular-price") 
 		precio_out = bot.imprime_precio(precio)
 		lista_precio_out+=[precio_out]
