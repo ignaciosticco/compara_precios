@@ -34,13 +34,11 @@ class PrecioBot:
 
 def main():
 
-	#url = 'https://supermercado.carrefour.com.ar/desayuno-y-merienda/yerba/yerba-mate-la-merced-barbacua-500-g.html'
-	#url = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-5-l.html'
 	#url = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
 
 	bot = PrecioBot()
 	bot.accede_al_sitio(url)
-	time.sleep(4)
+	time.sleep(2)
 	precio = bot.driver.find_element_by_class_name("regular-price")	
 	bot.imprime_precio(precio)
 
