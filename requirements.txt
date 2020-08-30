@@ -1,7 +1,5 @@
 absl-py==0.9.0
 alabaster==0.7.12
-apparmor==2.10.95
-apparmor.click==0.3.13.1
 apptools==4.4.0
 apturl==0.5.2
 astor==0.8.1
