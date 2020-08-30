@@ -107,7 +107,6 @@ ruamel.yaml.clib==0.2.0
 scikit-learn==0.22.2.post1
 scipy==1.2.1
 selenium==3.141.0
-sessioninstaller==0.0.0
 simplegeneric==0.8.1
 six==1.10.0
 sklearn==0.0
