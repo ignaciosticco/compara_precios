@@ -1,3 +1,18 @@
+from selenium import webdriver
+import os
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+
+driver.get("https://www.google.com/")
+print(driver.page_source)
+
+'''
 from time import sleep
 from flask import Flask, jsonify
 from obtiene_precios_carrefour_v2 import PrecioBot
@@ -29,7 +44,7 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 @app.route('/')
 def main():
 	'''
-	En la landing page imprime los nombres y precios de los productos
+	#En la landing page imprime los nombres y precios de los productos
 	'''
 
 	global lista_precio_out
@@ -53,7 +68,7 @@ def main():
 @app.route('/json')
 def solapa_json():
 	'''
-	En la pagina /json muestra el diccionario de productos y precios 
+	#En la pagina /json muestra el diccionario de productos y precios 
 	'''
 
 	diccionario_out = {'nombre_producto':lista_nombre_productos,
@@ -64,3 +79,4 @@ def solapa_json():
 
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
+'''
