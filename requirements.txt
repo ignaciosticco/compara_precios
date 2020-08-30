@@ -128,7 +128,6 @@ termcolor==1.1.0
 traitlets==4.3.2
 traits==5.1.1
 traitsui==6.1.1
-unattended-upgrades==0.1
 unity-scope-calculator==0.1
 unity-scope-chromiumbookmarks==0.1
 unity-scope-colourlovers==0.1
