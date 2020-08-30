@@ -1,1 +1,1 @@
-web: python api_carrefour.py
+web: python test.py
