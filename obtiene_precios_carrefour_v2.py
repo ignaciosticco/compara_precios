@@ -7,7 +7,7 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-
+'''
 from selenium import webdriver
 import os
 
@@ -17,7 +17,7 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-
+'''
 class PrecioBot:
 
 	def __init__(self):
