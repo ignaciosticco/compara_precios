@@ -46,7 +46,6 @@ def main():
 		print(string_out)
 		string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 		'''
-	del bot
 	return string_out
 
 '''
