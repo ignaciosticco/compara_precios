@@ -38,7 +38,7 @@ def main():
 	lista_precio_out = []
 
 	bot = PrecioBot()
-	string_out = ' Precios de Carrefour\n\n'
+	string_out = 'Compara Precios \n\nPrecios de Carrefour\n\n'
 	for i in range (0,len(lista_urls)):
 		bot.accede_al_sitio(lista_urls[i])
 		time.sleep(4)
