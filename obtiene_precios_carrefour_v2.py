@@ -2,13 +2,11 @@
 Este script encuentra e imprime los precios del supermercado carrefour
 Hay que pasarle un url del producto cuyo precio se quiere imprimir
 '''
-
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-
-
+import os
 
 
 class PrecioBot:
