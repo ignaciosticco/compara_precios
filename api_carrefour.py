@@ -31,7 +31,8 @@ def main():
 	global lista_precio_out
 	lista_precio_out = []
 
-	bot = PrecioBot()
+	#bot = PrecioBot()
+	driver = webdriver.Chrome()
 	string_out = 'Compara Precios de supermercados \n\nPrecios de Carrefour\n\n'
 
 	for i in range (0,len(lista_urls)):
