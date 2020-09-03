@@ -35,7 +35,7 @@ def main():
 	string_out = 'Compara Precios de supermercados \n\nPrecios de Carrefour\n\n'
 
 	for i in range (0,len(lista_urls)):
-		'''
+		
 		bot.accede_al_sitio(lista_urls[i])
 		time.sleep(4)
 		precio = bot.driver.find_element_by_class_name("regular-price") 
@@ -45,8 +45,7 @@ def main():
 		string_out += "\nProducto: {}\nPrecio: ${}\n\n".format(lista_nombre_productos[i],precio_out)
 		print(string_out)
 		string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-		'''
-	return string_out
+		return string_out
 
 '''
 @app.route('/json')
