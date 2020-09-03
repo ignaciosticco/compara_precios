@@ -45,7 +45,7 @@ def main():
 		string_out += "\nProducto: {}\nPrecio: ${}\n\n".format(lista_nombre_productos[i],precio_out)
 		print(string_out)
 		string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-	driver.quit()
+	driver.close()
 	return string_out
 
 '''
