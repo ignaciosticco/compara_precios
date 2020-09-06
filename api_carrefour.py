@@ -32,7 +32,7 @@ def main():
 	global lista_precio_out
 	lista_precio_out = []
 	webdriver.Chrome()
-	webDriver.Dispose()
+
 	#bot = PrecioBot()
 	string_out = 'Compara Precios de supermercados \n\nPrecios de Carrefour\n\n'
 
@@ -49,6 +49,7 @@ def main():
 		string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 		'''
 	return string_out
+	webDriver.Dispose()
 
 '''
 @app.route('/json')
