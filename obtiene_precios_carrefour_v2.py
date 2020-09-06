@@ -21,7 +21,7 @@ class PrecioBot:
 		#chrome_options.add_argument("--no-sandbox")
 		#driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
-		self.driver = webdriver.Chrome()
+		#self.driver = webdriver.Chrome()
 
 	def accede_al_sitio(self, url):
 
