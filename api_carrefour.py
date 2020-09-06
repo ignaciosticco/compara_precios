@@ -10,6 +10,7 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage") 
 chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--example-flag")
    
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
@@ -49,7 +50,7 @@ def main():
 		string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 		'''
 	return string_out
-	webDriver.Dispose()
+	#webDriver.Dispose()
 
 '''
 @app.route('/json')
