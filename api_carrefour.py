@@ -8,9 +8,9 @@ import os
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-dev-shm-usage") 
 chrome_options.add_argument("--no-sandbox")
-#chrome_options.add_argument('--disable-dev-shm-usage')   
+   
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 app = Flask(__name__)
@@ -32,6 +32,7 @@ def main():
 	global lista_precio_out
 	lista_precio_out = []
 	webdriver.Chrome()
+	webDriver.Dispose()
 	#bot = PrecioBot()
 	string_out = 'Compara Precios de supermercados \n\nPrecios de Carrefour\n\n'
 
