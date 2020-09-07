@@ -26,19 +26,13 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 
 @app.route('/')
 def main():
-	'''
-	TO DO: Poner a prueba este MWE
-	
+	'''	
 	En la landing page imprime los nombres y precios de los productos
 	'''
 
-	#global lista_precio_out
-	#lista_precio_out = []
-	webdriver.Chrome()
-
-	return "Hola"
-	'''
-	#bot = PrecioBot()
+	global lista_precio_out
+	lista_precio_out = []
+	bot = PrecioBot()
 	string_out = 'Compara Precios de supermercados \n\nPrecios de Carrefour\n\n'
 
 	for i in range (0,len(lista_urls)):
@@ -50,12 +44,10 @@ def main():
 		lista_precio_out+=[precio_out]
 
 		string_out += "\nProducto: {}\nPrecio: ${}\n\n".format(lista_nombre_productos[i],precio_out)
-		print(string_out)
-		string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
+	string_out+="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 		
 	return string_out
-	#webDriver.Dispose()
-	'''
+	
 '''
 @app.route('/json')
 def solapa_json():
