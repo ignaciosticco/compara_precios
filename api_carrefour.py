@@ -27,14 +27,16 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 @app.route('/')
 def main():
 	'''
+	TO DO: Poner a prueba este MWE
+	
 	En la landing page imprime los nombres y precios de los productos
 	'''
 
 	#global lista_precio_out
 	#lista_precio_out = []
-	webdriver.Chrome()
+	#webdriver.Chrome()
 
-	return 
+	return "Hola"
 	'''
 	#bot = PrecioBot()
 	string_out = 'Compara Precios de supermercados \n\nPrecios de Carrefour\n\n'
