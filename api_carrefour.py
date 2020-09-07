@@ -42,9 +42,9 @@ sched.start()
 '''
 @app.route('/')
 def main():
-	'''	
+	
 	#En la landing page imprime los nombres y precios de los productos
-	'''
+	
 
 	global lista_precio_out
 	lista_precio_out = []
