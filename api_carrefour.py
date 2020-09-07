@@ -34,7 +34,7 @@ def main():
 
 	#global lista_precio_out
 	#lista_precio_out = []
-	#webdriver.Chrome()
+	webdriver.Chrome()
 
 	return "Hola"
 	'''
