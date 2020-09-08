@@ -30,6 +30,13 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 
 
 
+@app.route('/')
+def main():
+
+	return "string_out"
+
+
+
 @sched.scheduled_job('interval', minutes=3)
 def timed_job():
     #print('This job is run every three minutes.')
@@ -37,10 +44,6 @@ def timed_job():
     string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
     #return string_out
 
-@app.route('/')
-def main():
-
-	return "string_out"
 
 '''
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
