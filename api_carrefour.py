@@ -34,7 +34,7 @@ def main():
 
 # TO DO: Hacer que el scheduler ande junto con el main
 
-
+'''
 sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
@@ -44,7 +44,7 @@ def timed_job():
     #return string_out
 
 sched.start()
-
+'''
 
 '''
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
