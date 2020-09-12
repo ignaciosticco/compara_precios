@@ -24,17 +24,17 @@ url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-
 lista_urls = [url1,url2]
 lista_nombre_productos = ['Leche entera','Coca Cola']
 
-
+'''
 app = Flask(__name__)
 
 @app.route('/')
 def main():
 
 	return "string_out"
-
+'''
 # TO DO: Hacer que el scheduler ande junto con el main
 
-'''
+
 sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
@@ -44,7 +44,7 @@ def timed_job():
     #return string_out
 
 sched.start()
-'''
+
 
 '''
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
