@@ -4,7 +4,7 @@ from obtiene_precios_carrefour_v2 import PrecioBot
 import time
 from selenium import webdriver
 import os
-#from flask_apscheduler import APScheduler
+from flask_apscheduler import APScheduler
 
 
 chrome_options = webdriver.ChromeOptions()
