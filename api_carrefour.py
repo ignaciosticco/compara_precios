@@ -24,26 +24,23 @@ lista_urls = [url1,url2]
 lista_nombre_productos = ['Leche entera','Coca Cola']
 
 
-
+'''
 app = Flask(__name__)
 @app.route('/')
 def main():
 	return "string_out"
-
 '''
 sched = BlockingScheduler()
-@sched.scheduled_job('interval', minutes=1)
+
+@sched.scheduled_job('interval', minutes=3)
 def timed_job():
     print('This job is run every three minutes.')
-    #global string_out
-    #string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-sched.start()
-
 
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
 def scheduled_job():
     print('This job is run every weekday at 5pm.')
-'''
+
+sched.start()
 
 
 
