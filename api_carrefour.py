@@ -28,17 +28,17 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
-    #print('This job is run every three minutes.')
-    global string_out
-    string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-    return string_out
+    print('This job is run every three minutes.')
+    #global string_out
+    #string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
+    return 
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def main():
-	return string_out
+	return "string_out"
 sched.start()
 
 '''
