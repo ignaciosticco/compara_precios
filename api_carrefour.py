@@ -30,6 +30,7 @@ app = Flask(__name__)
 def main():
 	return "string_out"
 
+'''
 sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
@@ -38,7 +39,7 @@ def timed_job():
     #string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 sched.start()
 
-'''
+
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
 def scheduled_job():
     print('This job is run every weekday at 5pm.')
