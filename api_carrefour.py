@@ -4,7 +4,7 @@ from obtiene_precios_carrefour_v2 import PrecioBot
 import time
 from selenium import webdriver
 import os
-from apscheduler.schedulers.blocking import BlockingScheduler
+from flask_apscheduler import APScheduler
 
 
 chrome_options = webdriver.ChromeOptions()
@@ -25,20 +25,12 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 
 
 app = Flask(__name__)
+scheduler = APScheduler()
+
 @app.route('/')
 def main():
-	string = timed_job()
+	string = "hola"
 	return string
-
-sched = BlockingScheduler()
-
-@sched.scheduled_job('interval', minutes=1)
-def timed_job():
-    print('This job is run every three minutes.')
-    return "aas"
-
-
-sched.start()
 
 
 
