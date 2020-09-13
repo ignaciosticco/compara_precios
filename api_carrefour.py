@@ -16,7 +16,6 @@ chrome_options.add_argument("--no-sandbox")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 
-
 ###################### DATA DE PRODUCTOS ######################
 product_id = [1,2]
 url1 = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
@@ -24,24 +23,22 @@ url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-
 lista_urls = [url1,url2]
 lista_nombre_productos = ['Leche entera','Coca Cola']
 
-'''
+
 app = Flask(__name__)
 
 @app.route('/')
 def main():
-
-	return "string_out"
-'''
-# TO DO: Hacer que el scheduler ande junto con el main
+	return string_out
 
 
 sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
-    print('This job is run every three minutes.')
-    #global string_out
-    #string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-    #return string_out
+    #print('This job is run every three minutes.')
+    global string_out
+    string_out="\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
+    return string_out
+
 
 sched.start()
 
