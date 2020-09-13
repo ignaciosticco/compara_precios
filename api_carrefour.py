@@ -34,16 +34,12 @@ def timed_job():
     return string_out
 
 
-sched.start()
-
-
-
 app = Flask(__name__)
 
 @app.route('/')
 def main():
 	return string_out
-
+sched.start()
 
 '''
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
