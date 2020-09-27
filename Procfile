@@ -1,1 +1,1 @@
-worker: python api_carrefour.py
+web: python3 api_carrefour.py
