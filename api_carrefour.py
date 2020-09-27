@@ -5,7 +5,7 @@ import time
 from selenium import webdriver
 import os
 from apscheduler.schedulers.blocking import BlockingScheduler
-#import schedule
+import schedule
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -23,11 +23,19 @@ url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-
 lista_urls = [url1,url2]
 lista_nombre_productos = ['Leche entera','Coca Cola']
 
-
 app = Flask(__name__)
 
+##################### TESTING #####################
+
+@app.route('/')
+def main():
+
+	print("Hola mundo")
+
+################################################### 
 
 
+'''
 @app.route('/')
 def main():
 	
@@ -52,7 +60,7 @@ def main():
 		
 	return string_out
 	
-'''
+
 @app.route('/json')
 def solapa_json():
 
