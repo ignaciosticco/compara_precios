@@ -32,7 +32,7 @@ def main():
 
 	return "Hola mundo"
 
-
+'''
 def job():
 	return "SI"
 
@@ -43,7 +43,7 @@ while True:
     schedule.run_pending()
     time.sleep(1) # wait one minute
 
-
+'''
 
 ################################################### 
 
