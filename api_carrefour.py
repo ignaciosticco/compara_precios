@@ -27,12 +27,11 @@ app = Flask(__name__)
 
 ##################### TESTING #####################
 
-'''
 @app.route('/')
 def main():
 
 	return "Hola mundo"
-'''
+
 
 def job():
 	return "SI"
