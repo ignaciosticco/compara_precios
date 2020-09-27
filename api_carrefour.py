@@ -30,7 +30,7 @@ app = Flask(__name__)
 @app.route('/')
 def main():
 
-	print("Hola mundo")
+	return "Hola mundo"
 
 ################################################### 
 
