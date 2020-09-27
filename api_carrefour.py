@@ -27,12 +27,29 @@ app = Flask(__name__)
 
 ##################### TESTING #####################
 
+'''
 @app.route('/')
 def main():
 
 	return "Hola mundo"
+'''
+
+def job():
+	return "SI"
+
+
+schedule.every(1).minutes.do(job)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1) # wait one minute
+
+
 
 ################################################### 
+
+
+
 
 
 '''
