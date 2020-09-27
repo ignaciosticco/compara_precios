@@ -4,7 +4,7 @@ from obtiene_precios_carrefour_v2 import PrecioBot
 import time
 from selenium import webdriver
 import os
-from flask_apscheduler import APScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 chrome_options = webdriver.ChromeOptions()
@@ -25,15 +25,9 @@ lista_nombre_productos = ['Leche entera','Coca Cola']
 
 
 app = Flask(__name__)
-#scheduler = APScheduler()
-
-@app.route('/')
-def main():
-	return "string"
 
 
 
-'''
 @app.route('/')
 def main():
 	
@@ -58,7 +52,7 @@ def main():
 		
 	return string_out
 	
-
+'''
 @app.route('/json')
 def solapa_json():
 
