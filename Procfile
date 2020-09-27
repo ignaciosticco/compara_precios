@@ -1,1 +1,1 @@
-web: python3 api_carrefour.py
+web: gunicorn api_carrefour:app --log-file=-
