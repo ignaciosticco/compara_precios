@@ -8,6 +8,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 import schedule
 
 def job():
+	print("Funciona")
 	return "SI"
 
 
