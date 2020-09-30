@@ -27,9 +27,11 @@ app = Flask(__name__)
 
 ##################### TESTING #####################
 
+string_out = "Inicio"
+
 @app.route('/')
 def main():
-	return "Hola mundo"
+	return string_out #"Hola mundo"
 
 
 
