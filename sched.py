@@ -3,7 +3,8 @@ import schedule
 
 def job():
 	print("Funciona")
-	return "SI"
+	string_out = "\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
+	return string_out
 
 
 schedule.every(1).minutes.do(job)
