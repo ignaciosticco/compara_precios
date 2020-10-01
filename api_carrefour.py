@@ -1,3 +1,5 @@
+### ATENCION: Incluir sched rompio todo. Hay que ver que se puede hacer
+
 from time import sleep
 from flask import Flask, jsonify
 from obtiene_precios_carrefour_v2 import PrecioBot
@@ -6,7 +8,7 @@ from selenium import webdriver
 import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 import schedule
-import sched
+#import sched  
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
