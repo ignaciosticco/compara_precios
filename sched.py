@@ -7,8 +7,9 @@ def job():
 	return string_out
 
 
-schedule.every(5).seconds.do(job)
-
+schedule.every(1).minutes.do(job)
+'''
 while True:
     schedule.run_pending()
-    #time.sleep(1) # wait one minute
+    time.sleep(1) # wait one minute
+'''
