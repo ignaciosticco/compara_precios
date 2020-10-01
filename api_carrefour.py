@@ -8,7 +8,7 @@ from selenium import webdriver
 import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 import schedule
-#import sched  
+from sched import job  
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
