@@ -45,7 +45,7 @@ def main():
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			cur.execute("SELECT * FROM productos;")
-			string_web = cur.fetchall() # string(cur.fetchall())
+			string_web = str(cur.fetchall())
 
 
 	return string_web #"Hola mundo"
