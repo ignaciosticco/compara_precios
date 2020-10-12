@@ -11,13 +11,14 @@ DB_PASS = "47db36530ea1899a22c36daae1b3eadce120520c46e7b92a24eaf9144a2b1f22"
 
 conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 
+'''
 with conn:
 	with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 
 		cur.execute("SELECT * FROM productos;")
 		print(cur.fetchall())
-
 conn.close()
+'''
 
 '''
 conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
@@ -32,11 +33,18 @@ conn.close()
 '''
 
 
-'''
 def job():
 	print("Funciona")
 	string_out = "\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 	print("{}".format(string_out))
+
+	with conn:
+		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+
+			cur.execute("SELECT * FROM productos;")
+			print(cur.fetchall())
+	conn.close()
+
 	return string_out
 
 
@@ -45,4 +53,3 @@ schedule.every(1).minutes.do(job)
 while True:
     schedule.run_pending()
     time.sleep(1) # wait one minute
-'''
