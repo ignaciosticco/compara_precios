@@ -40,7 +40,7 @@ def job():
 
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-
+			cur.execute("INSERT INTO productos (name) VALUES(%s)",(string_out,))
 			cur.execute("SELECT * FROM productos;")
 			print(cur.fetchall())
 	conn.close()
