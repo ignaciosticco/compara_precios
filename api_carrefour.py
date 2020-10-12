@@ -36,6 +36,7 @@ app = Flask(__name__)
 
 ##################### TESTING #####################
 
+string_web = "TEST"
 
 @app.route('/')
 def main():
@@ -44,9 +45,9 @@ def main():
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			#cur.execute("INSERT INTO productos (name) VALUES(%s)",(string_out,))
-			cur.execute("SELECT * FROM productos;")
+			string_web = cur.execute("SELECT * FROM productos;")
 
-	return "Hola mundo"
+	return string_web #"Hola mundo"
 
 
 
