@@ -34,16 +34,15 @@ conn.close()
 
 
 def job():
-	print("Funciona")
+	print("Print Sched")
 	string_out = "\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-	print("{}".format(string_out))
 
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			cur.execute("INSERT INTO productos (name) VALUES(%s)",(string_out,))
 			cur.execute("SELECT * FROM productos;")
-			print(cur.fetchall())
+			#print(cur.fetchall())
 	conn.close()
 
 	return string_out
