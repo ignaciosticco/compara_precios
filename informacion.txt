@@ -1,0 +1,8 @@
+Este archivo contiene informacion importante para el uso
+
+
+Como apagar un proceso en Background:
+heroku ps:scale worker=0
+
+Como prender un proceso en el background:
+heroku ps:scale worker=1
