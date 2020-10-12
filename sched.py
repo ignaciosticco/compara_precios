@@ -9,7 +9,7 @@ DB_USER = "lonhfypadrcwga"
 DB_PASS = "47db36530ea1899a22c36daae1b3eadce120520c46e7b92a24eaf9144a2b1f22"
 
 
-conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
+#conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 
 '''
 with conn:
@@ -38,6 +38,7 @@ def job():
 	string_out = "\n\nUltima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 	print("{}".format(string_out))
 
+	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			cur.execute("INSERT INTO productos (name) VALUES(%s)",(string_out,))
