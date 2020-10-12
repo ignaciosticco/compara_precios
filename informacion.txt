@@ -6,3 +6,15 @@ heroku ps:scale worker=0
 
 Como prender un proceso en el background:
 heroku ps:scale worker=1
+
+
+Vide para configurar flask en Heroku (Hello world Heroku Flask):
+
+https://vimeo.com/147784643
+
+
+Videos re util para configurar la base de datos:
+
+https://www.youtube.com/watch?v=OOSl2jeAA5U
+
+https://www.youtube.com/watch?v=Y9lhjKHc39U
