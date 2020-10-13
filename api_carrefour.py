@@ -43,7 +43,7 @@ def main():
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			#cur.execute("SELECT * FROM tabla_hora;")
-			cur.execute("SELECT * FROM tabla_hora WHERE id = %s;", (1,))
+			cur.execute("SELECT * FROM tabla_hora WHERE id ='1';")
 			string_web = str(cur.fetchall()['hora'])
 
 	return string_web 
