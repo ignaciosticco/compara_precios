@@ -42,7 +42,8 @@ def main():
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-			cur.execute("SELECT * FROM tabla_hora;")
+			#cur.execute("SELECT * FROM tabla_hora;")
+			cur.execute("SELECT * FROM tabla_hora WHERE id = %s;", (1,))
 			string_web = str(cur.fetchall()['hora'])
 
 	return string_web 
