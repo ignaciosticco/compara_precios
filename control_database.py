@@ -18,6 +18,9 @@ with conn:
 		cur.execute("SELECT * FROM tabla_hora;")	# Esta linea y la de abajo imprimen la tabla
 		print(cur.fetchall())
 		
-		cur.execute("update tabla_hora set hora='{}' where id='1';".format(string))
-		cur.execute("SELECT * FROM tabla_hora;")
-		print(cur.fetchall())
+		#cur.execute("update tabla_hora set hora='{}' where id='1';".format(string))
+		#cur.execute("SELECT * FROM tabla_hora;")
+		cur.execute("SELECT * FROM tabla_hora WHERE id ='1';")
+		#string_web = str(cur.fetchall()['hora'])		
+
+		print(cur.fetchone()['hora'])
