@@ -36,8 +36,6 @@ app = Flask(__name__)
 
 ##################### TESTING #####################
 
-string_web = "TEST"
-
 @app.route('/')
 def main():
 
@@ -47,9 +45,7 @@ def main():
 			cur.execute("SELECT * FROM productos;")
 			string_web = str(cur.fetchall())
 
-
-	return string_web #"Hola mundo"
-
+	return string_web 
 
 
 
