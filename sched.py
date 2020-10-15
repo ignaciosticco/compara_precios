@@ -13,7 +13,8 @@ DB_PASS = "47db36530ea1899a22c36daae1b3eadce120520c46e7b92a24eaf9144a2b1f22"
 def job():
 	print("Print Sched")
 	#string_hora = "Ultima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
-	string_hora = "Ultima actualizacion: {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+	delta_t = datetime.timedelta(hours=3) # porque BsAs esta a gmt-3
+	string_hora = "Ultima actualizacion: {}".format((datetime.datetime.now()- delta_t).strftime('%Y-%m-%d %H:%M:%S'))
 
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
