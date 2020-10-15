@@ -44,7 +44,8 @@ def main():
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			#cur.execute("SELECT * FROM tabla_hora;")
 			cur.execute("SELECT * FROM tabla_hora WHERE id ='1';")
-			string_web = "Last update: \n"+str(cur.fetchone()['hora'])
+			string_web = "Ultima actualizacion: \n"+str(cur.fetchone()['hora'])
+			# TO DO: hacer que el string out incluya a los datos de los precios.
 
 	return string_web 
 

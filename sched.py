@@ -14,7 +14,7 @@ DB_PASS = "47db36530ea1899a22c36daae1b3eadce120520c46e7b92a24eaf9144a2b1f22"
 def job():
 	print("Print Sched up")
 	delta_t = datetime.timedelta(hours=3) # porque BsAs esta a gmt-3
-	string_hora = "Ultima actualizacion: {}".format((datetime.datetime.now()- delta_t).strftime('%Y-%m-%d %H:%M:%S'))
+	string_hora = "{}".format((datetime.datetime.now()- delta_t).strftime('%Y-%m-%d %H:%M:%S'))
 
 	lista_precio_out = actualiza_lista_precios()
 	print(lista_precio_out)
