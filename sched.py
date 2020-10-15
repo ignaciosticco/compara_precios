@@ -3,6 +3,7 @@ import schedule
 import psycopg2
 import psycopg2.extras
 import datetime
+from obtiene_precios_carrefour_v2 import PrecioBot
 
 DB_HOST = "ec2-34-235-62-201.compute-1.amazonaws.com"
 DB_NAME = "de5j3eiug6jr8t"
