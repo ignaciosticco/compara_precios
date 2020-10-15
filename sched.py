@@ -2,6 +2,7 @@ import time
 import schedule
 import psycopg2
 import psycopg2.extras
+import datetime
 
 DB_HOST = "ec2-34-235-62-201.compute-1.amazonaws.com"
 DB_NAME = "de5j3eiug6jr8t"
@@ -11,7 +12,8 @@ DB_PASS = "47db36530ea1899a22c36daae1b3eadce120520c46e7b92a24eaf9144a2b1f22"
 
 def job():
 	print("Print Sched")
-	string_hora = "Ultima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
+	#string_hora = "Ultima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
+	string_hora = "Ultima actualizacion: {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
