@@ -16,6 +16,9 @@ def job():
 	delta_t = datetime.timedelta(hours=3) # porque BsAs esta a gmt-3
 	string_hora = "Ultima actualizacion: {}".format((datetime.datetime.now()- delta_t).strftime('%Y-%m-%d %H:%M:%S'))
 
+	lista_precio_out = actualiza_lista_precios()
+	print(lista_precio_out)
+	
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
@@ -28,7 +31,31 @@ def job():
 	return string_hora
 
 
-schedule.every(1).minutes.do(job)
+def actualiza_lista_precios():
+	'''
+	Esta funcion devuelve una lista con los precios actualizados
+	'''
+
+
+	url1 = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
+	url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-5-l.html'
+	lista_urls = [url1,url2]
+
+	lista_precio_out = []
+	bot = PrecioBot()
+
+	for i in range (0,len(lista_urls)):
+		
+		bot.accede_al_sitio(lista_urls[i])
+		time.sleep(5)
+		precio = bot.driver.find_element_by_class_name("regular-price") 
+		precio_out = bot.imprime_precio(precio)
+		lista_precio_out+=[precio_out]
+
+	return lista_precio_out
+
+
+schedule.every(10).minutes.do(job)
 
 while True:
     schedule.run_pending()
