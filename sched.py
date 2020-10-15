@@ -57,7 +57,7 @@ def actualiza_lista_precios():
 	return lista_precio_out
 
 
-schedule.every(2).minutes.do(job)
+schedule.every(180).minutes.do(job)
 
 while True:
     schedule.run_pending()
