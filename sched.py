@@ -18,7 +18,7 @@ def job():
 
 	lista_precio_out = actualiza_lista_precios()
 	print(lista_precio_out)
-	
+
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
@@ -55,7 +55,7 @@ def actualiza_lista_precios():
 	return lista_precio_out
 
 
-schedule.every(10).minutes.do(job)
+schedule.every(2).minutes.do(job)
 
 while True:
     schedule.run_pending()
