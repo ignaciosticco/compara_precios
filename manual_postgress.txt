@@ -1,0 +1,19 @@
+# Esto borra la tabla:
+#cur.execute("DROP TABLE Tabla_Hora;")   
+
+# Crea tabla:
+#cur.execute("CREATE TABLE tabla_hora (id SERIAL PRIMARY KEY, hora VARCHAR);") 
+
+# Mete fila en la tabla:
+#cur.execute("INSERT INTO tabla_hora (hora) VALUES(%s)", ("primera hora",))
+
+# Actualiza fila en la tabla: 
+#cur.execute("update tabla_hora set hora='segunda hora' where id='1';")  
+
+# Esta linea y la de abajo imprimen toda la tabla:
+#cur.execute("SELECT * FROM tabla_hora;")	
+#print(cur.fetchall())
+
+# Esta linea y la de abajo imprimen la columna hora correspondiente al id=1:
+#cur.execute("SELECT * FROM tabla_hora WHERE id ='1';")		
+#print(cur.fetchone()['hora'])

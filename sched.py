@@ -12,7 +12,6 @@ DB_PASS = "47db36530ea1899a22c36daae1b3eadce120520c46e7b92a24eaf9144a2b1f22"
 
 def job():
 	print("Print Sched")
-	#string_hora = "Ultima actualizacion: {}".format(time.strftime("%d-%m-%y %H:%M:%S", time.gmtime()))
 	delta_t = datetime.timedelta(hours=3) # porque BsAs esta a gmt-3
 	string_hora = "Ultima actualizacion: {}".format((datetime.datetime.now()- delta_t).strftime('%Y-%m-%d %H:%M:%S'))
 
@@ -20,6 +19,9 @@ def job():
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			cur.execute("update tabla_hora set hora='{}' where id='1';".format(string_hora))
+			
+			cur.execute("update tabla_carrefour set precio='{}' where id='1';".format("1.0"))
+			cur.execute("update tabla_carrefour set precio='{}' where id='2';".format("2"))
 	conn.close()
 
 	return string_hora
