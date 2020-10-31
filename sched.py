@@ -58,6 +58,7 @@ def actualiza_lista_precios():
 
 
 def wakeup():
+	print("UP and working (print)")
 	return "UP and working"
 
 
