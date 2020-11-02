@@ -62,8 +62,8 @@ def wakeup():
 	return "UP and working"
 
 
-schedule.every(1).minutes.do(wakeup)
-schedule.every(2).minutes.do(job)
+schedule.every(5).minutes.do(wakeup)
+schedule.every(90).minutes.do(job)
 
 while True:
     schedule.run_pending()
