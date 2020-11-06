@@ -45,6 +45,10 @@ def main():
 			#cur.execute("SELECT * FROM tabla_hora;")
 			cur.execute("SELECT * FROM tabla_hora WHERE id ='1';")
 			string_web = "Ultima actualizacion: \n"+str(cur.fetchone()['hora'])
+
+			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='1';")
+			string_web += "Precio Leche: \n"+str(cur.fetchone()['precio'])
+
 			# TO DO: hacer que el string out incluya a los datos de los precios.
 
 	return string_web 
