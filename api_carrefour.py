@@ -44,7 +44,7 @@ def main():
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
 			#cur.execute("SELECT * FROM tabla_hora;")
 			cur.execute("SELECT * FROM tabla_hora WHERE id ='1';")
-			string_web = "Ultima actualizacion: \n"+str(cur.fetchone()['hora'])+"\n"
+			string_web = "Ultima actualizacion: \n"+str(cur.fetchone()['hora'])+"\n\n"
 
 			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='1';")
 			string_web += "Precio Leche: "+"$"+str(cur.fetchone()['precio'])+"\n"
