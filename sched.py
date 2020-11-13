@@ -21,6 +21,8 @@ def job():
 	lista_precio_out = actualiza_lista_precios()
 	print(lista_precio_out)
 
+	lista_precio_out_coto = actualiza_lista_precios_coto()
+
 	conn = psycopg2.connect(dbname=DB_NAME,user=DB_USER,password=DB_PASS,host=DB_HOST)
 	with conn:
 		with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
@@ -28,6 +30,9 @@ def job():
 			
 			cur.execute("update tabla_carrefour set precio='{}' where id='1';".format(str(lista_precio_out[0])))
 			cur.execute("update tabla_carrefour set precio='{}' where id='2';".format(str(lista_precio_out[1])))
+
+			cur.execute("update tabla_coto set precio='{}' where id='1';".format(str(lista_precio_out_coto[0])))
+			cur.execute("update tabla_coto set precio='{}' where id='2';".format(str(lista_precio_out_coto[1])))
 	conn.close()
 
 

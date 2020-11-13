@@ -47,11 +47,15 @@ def main():
 			string_web = "Ultima actualizacion: \n"+str(cur.fetchone()['hora'])+"\n\n"
 
 			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='1';")
-			string_web += "Precio Leche: "+"$"+str(cur.fetchone()['precio'])+"\n"
+			string_web += "Precio Leche (Carrefour): "+"$"+str(cur.fetchone()['precio'])+"\n"
 			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='2';")
-			string_web += "Precio Coca: "+"$"+str(cur.fetchone()['precio'])+"\n"
+			string_web += "Precio Coca (Carrefour): "+"$"+str(cur.fetchone()['precio'])+"\n"
 
-			# TO DO: hacer que el string out incluya a los datos de los precios.
+
+			cur.execute("SELECT * FROM tabla_coto WHERE id ='1';")
+			string_web += "Precio Leche (Coto): "+"$"+str(cur.fetchone()['precio'])+"\n"
+			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='2';")
+			string_web += "Precio Coca (Coto): "+"$"+str(cur.fetchone()['precio'])+"\n"
 
 	return string_web 
 
