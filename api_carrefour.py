@@ -49,12 +49,12 @@ def main():
 			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='1';")
 			string_web += "Precio Leche (Carrefour): "+"$"+str(cur.fetchone()['precio'])+"\n"
 			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='2';")
-			string_web += "Precio Coca (Carrefour): "+"$"+str(cur.fetchone()['precio'])+"\n"
+			string_web += "Precio Coca (Carrefour): "+"$"+str(cur.fetchone()['precio'])+"\n\n"
 
 
 			cur.execute("SELECT * FROM tabla_coto WHERE id ='1';")
 			string_web += "Precio Leche (Coto): "+"$"+str(cur.fetchone()['precio'])+"\n"
-			cur.execute("SELECT * FROM tabla_carrefour WHERE id ='2';")
+			cur.execute("SELECT * FROM tabla_coto WHERE id ='2';")
 			string_web += "Precio Coca (Coto): "+"$"+str(cur.fetchone()['precio'])+"\n"
 
 	return string_web 
