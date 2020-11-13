@@ -72,14 +72,14 @@ def actualiza_lista_precios_coto():
 	lista_urls = [url1,url2]
 
 	lista_precio_out_coto = []
-	bot = precioBot_coto()
+	bot_coto = precioBot_coto()
 
 	for i in range (0,len(lista_urls)):
 		
-		bot.accede_al_sitio(lista_urls[i])
+		bot_coto.accede_al_sitio(lista_urls[i])
 		time.sleep(5)
 		html_soup = BeautifulSoup(response.text, 'html.parser')
-		precio_out = bot.obtiene_precio(html_soup)
+		precio_out = bot_coto.obtiene_precio(html_soup)
 
 		lista_precio_out_coto+=[precio_out]
 
