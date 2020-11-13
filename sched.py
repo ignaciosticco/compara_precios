@@ -6,6 +6,7 @@ import datetime
 from   obtiene_precios_carrefour_v2 import PrecioBot
 from   obtiene_precios_coto_v2  import precioBot_coto
 from   bs4 import BeautifulSoup
+from   requests import get
 
 DB_HOST = "ec2-34-235-62-201.compute-1.amazonaws.com"
 DB_NAME = "de5j3eiug6jr8t"
@@ -78,6 +79,7 @@ def actualiza_lista_precios_coto():
 		
 		bot_coto.accede_al_sitio(lista_urls[i])
 		time.sleep(5)
+		response = get(bot_coto.driver.current_url)
 		html_soup = BeautifulSoup(response.text, 'html.parser')
 		precio_out = bot_coto.obtiene_precio(html_soup)
 

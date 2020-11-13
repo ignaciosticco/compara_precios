@@ -6,6 +6,9 @@
 
 # Mete fila en la tabla:
 #cur.execute("INSERT INTO tabla_hora (hora) VALUES(%s)", ("primera hora",))
+#cur.execute("INSERT INTO tabla_coto (producto,precio) VALUES(%s,%s)", ("Coca","$888"))
+Nota: no hay que poner el id (SERIAL PRIMARY KEY), lo hace automaticamente
+
 
 # Actualiza fila en la tabla: 
 #cur.execute("update tabla_hora set hora='segunda hora' where id='1';")  

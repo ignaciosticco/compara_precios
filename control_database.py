@@ -13,5 +13,11 @@ with conn:
 
 		#cur.execute("CREATE TABLE tabla_carrefour (id SERIAL PRIMARY KEY, producto VARCHAR, precio VARCHAR);") 		
 		#cur.execute("INSERT INTO tabla_carrefour (producto,precio) VALUES(%s,%s)", ("Coca-Cola","$200"))
-		cur.execute("SELECT * FROM tabla_carrefour;")	
+		#cur.execute("SELECT * FROM tabla_carrefour;")	
+
+		#cur.execute("CREATE TABLE tabla_coto (id SERIAL PRIMARY KEY, producto VARCHAR, precio VARCHAR);") 		
+		#cur.execute("INSERT INTO tabla_coto (producto,precio) VALUES(%s,%s)", ("Coca","$888"))
+		#cur.execute("SELECT * FROM tabla_coto WHERE id ='1';")
+		
+		cur.execute("SELECT * FROM tabla_coto;")	
 		print(cur.fetchall())
