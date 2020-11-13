@@ -7,6 +7,7 @@ from   obtiene_precios_carrefour_v2 import PrecioBot
 from   obtiene_precios_coto_v2  import precioBot_coto
 from   bs4 import BeautifulSoup
 from   requests import get
+from   selenium import webdriver
 
 DB_HOST = "ec2-34-235-62-201.compute-1.amazonaws.com"
 DB_NAME = "de5j3eiug6jr8t"
