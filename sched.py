@@ -3,7 +3,9 @@ import schedule
 import psycopg2
 import psycopg2.extras
 import datetime
-from obtiene_precios_carrefour_v2 import PrecioBot
+from   obtiene_precios_carrefour_v2 import PrecioBot
+from   obtiene_precios_coto_v2  import precioBot_coto
+from   bs4 import BeautifulSoup
 
 DB_HOST = "ec2-34-235-62-201.compute-1.amazonaws.com"
 DB_NAME = "de5j3eiug6jr8t"
@@ -38,7 +40,6 @@ def actualiza_lista_precios():
 	Esta funcion devuelve una lista con los precios actualizados
 	'''
 
-
 	url1 = 'https://supermercado.carrefour.com.ar/lacteos-y-productos-frescos/leches/leche-entera-larga-vida-la-serenisima-3-1-l.html'
 	url2 = 'https://supermercado.carrefour.com.ar/bebidas/gaseosa-coca-cola-light-2-5-l.html'
 	lista_urls = [url1,url2]
@@ -55,6 +56,29 @@ def actualiza_lista_precios():
 		lista_precio_out+=[precio_out]
 
 	return lista_precio_out
+
+def actualiza_lista_precios_coto():
+	'''
+	Esta funcion devuelve una lista con los precios de Coto actualizados
+	'''
+
+	url1 = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-leche-entera-clasica-la-serenisima-larga-vida-1l/_/A-00253482-00253482-200'
+	url2 = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-gaseosa-coca-cola-sin-azucar---botella-25-l-/_/A-00183936-00183936-200'
+	lista_urls = [url1,url2]
+
+	lista_precio_out_coto = []
+	bot = precioBot_coto()
+
+	for i in range (0,len(lista_urls)):
+		
+		bot.accede_al_sitio(lista_urls[i])
+		time.sleep(5)
+		html_soup = BeautifulSoup(response.text, 'html.parser')
+		precio_out = bot.obtiene_precio(html_soup)
+
+		lista_precio_out_coto+=[precio_out]
+
+	return lista_precio_out_coto
 
 
 def wakeup():

@@ -28,7 +28,8 @@ class precioBot_coto:
 				j=0
 				while j<len(texto_separado) and flag:
 					if '$' in texto_separado[i+j]:
-						precio = float(texto_separado[i+j].strip(' $').replace(',', ''))
+						print(texto_separado[i+j].strip(' $'))
+						precio = float(texto_separado[i+j].strip(' $').replace('.', '').replace(',', '.'))
 						flag = False
 						i = i+j-1
 					j+=1
@@ -41,8 +42,9 @@ def main():
 	
 	############ TESTEO ############ 
 	bot = precioBot_coto()
-	url = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-gaseosa-coca-cola-sin-azucar---botella-25-l-/_/A-00183936-00183936-200'
-	#url = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-leche-entera-clasica-la-serenisima-larga-vida-1l/_/A-00253482-00253482-200'
+	#url = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-gaseosa-coca-cola-sin-azucar---botella-25-l-/_/A-00183936-00183936-200'
+	url = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-leche-entera-clasica-la-serenisima-larga-vida-1l/_/A-00253482-00253482-200'
+	#url = 'https://www.cotodigital3.com.ar/sitios/cdigi/producto/-langostino-pelado-crudo-grande-congelado-x-kg/_/A-00080592-00080592-200'
 	bot.accede_al_sitio(url)
 
 	response = get(bot.driver.current_url)
